@@ -22,8 +22,22 @@ sort([]); // []
 ***********************************************************************/
 
 function sort(nums, sorted = []) {
-    // Your code here 
+    //base = Check the base case: If `nums` is empty, then return `sorted`
+    //console.log(nums, sorted)
+    if (nums.length === 0) return sorted;
+    if (nums.length > 0) {
+       let smallest = Math.min(...nums);
+       sorted.push(smallest)
+       console.log(nums, sorted)
+       nums.splice(nums.indexOf(smallest), 1)
+       console.log(nums, sorted)
+        return sort(nums, sorted)
+    }
 }
+
+console.log(sort([4,1,6,3,1,7])); // [1, 1, 3, 4, 6, 7]
+//sort([0, 1, -3]); // [-3, 0, 1]
+//console.log(sort([]), "answer to third problem"); // []
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 module.exports = sort;
